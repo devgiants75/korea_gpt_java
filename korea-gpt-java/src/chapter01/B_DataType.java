@@ -64,5 +64,8 @@ public class B_DataType {
         // String: 문자열을 저장하는 데 사용
         // - 쌍따옴표를 사용하여 문자열을 작성
         String name = "이승아";
+        System.out.println(name);
+        char charName = '이';
+        System.out.println(charName);
     }
 }
