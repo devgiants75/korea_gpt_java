@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자리표</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .seating-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        .seat.instructor {
+            background-color: #FFA726;
+            width: calc(100% - 350px);
+            text-align: center;
+            font-weight: bold;
+            margin-left: auto;
+        }
+
+        .aisle {
+            width: 20px;
+            /* 복도 공간 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="seating-chart">
+        <!-- 강사 자리 -->
+        <div class="row">
+            <div class="seat instructor" colspan="8">강사 자리</div>
+        </div>
+        <!-- 학생 자리 -->
+        <div class="row">
+            <div class="seat">1-1</div>
+            <div class="seat">1-2</div>
+            <div class="seat">1-3</div>
+            <div class="seat">1-4</div>
+            <div class="aisle"></div>
+            <div class="seat">1-5</div>
+            <div class="seat">1-6</div>
+            <div class="seat">1-7</div>
+            <div class="seat">1-8</div>
+        </div>
+        <div class="row">
+            <div class="seat">2-1</div>
+            <div class="seat">2-2</div>
+            <div class="seat">2-3</div>
+            <div class="seat">2-4</div>
+            <div class="aisle"></div>
+            <div class="seat">2-5</div>
+            <div class="seat">2-6</div>
+            <div class="seat">2-7</div>
+            <div class="seat">2-8</div>
+        </div>
+        <div class="row">
+            <div class="seat">3-1</div>
+            <div class="seat">3-2</div>
+            <div class="seat">3-3</div>
+            <div class="seat">3-4</div>
+            <div class="aisle"></div>
+            <div class="seat">3-5</div>
+            <div class="seat">3-6</div>
+            <div class="seat">3-7</div>
+            <div class="seat">3-8</div>
+        </div>
+        <div class="row">
+            <div class="seat">4-1</div>
+            <div class="seat">4-2</div>
+            <div class="seat">X</div>
+            <div class="seat">X</div>
+            <div class="aisle"></div>
+            <div class="seat">4-5</div>
+            <div class="seat">4-6</div>
+            <div class="seat">4-7</div>
+            <div class="seat">4-8</div>
+        </div>
+    </div>
+</body>
+
+</html>
