@@ -32,13 +32,47 @@ class Car {
     // - 클래스 내부의 필드를 초기화할 때 주로 사용
     // +) 생성자는 반환타입을 가지지 X
     Car(String modelName, int year) {
+
+        // 생성자 사용 시
+        // modelName: xc60, year: 2024
         model = modelName;
+
+        // this 키워드
+        // > 클래스 그 자체의 객체를 가리킴, 객체 자신을 참조하는 데 사용
+        // > 클래스의 필드와 생성자로 받아오는 데이터의 이름이 같을 경우 구분하기 위해 사용
         this.year = year;
     }
 }
 
 public class Object03 {
     public static void main(String[] args) {
+        // === 객체 생성 (객체 인스턴스화) ===
+        // : new 연산자를 사용
+        //      - 클래스의 생성자를 호출
+        //      - 객체의 초기 상태를 설정
+        //      - 생성된 객체의 메모리 주소를 반환하여 참조 변수에 저장
 
+        // 생성자 호출: 생성자명(필요한 매개변수...);
+
+        // 해당 객체에 대한 참조(주소)를 클래스 타입의 변수에 저장
+        Car myCar = new Car("volvo xc60", 2024);
+
+        // === 객체 사용 ===
+        // : .연산자를 사용하여 객체 내부의 필드와 메서드를 사용
+
+        // 1. 필드 접근
+        // : 객체명.필드명;
+        System.out.println(myCar.model); // volvo xc60
+        System.out.println(myCar.year); // 2024
+
+        // 2. 메서드 호출
+        // : 객체명.메서드명();
+        myCar.displayInfo();
+
+        // cf) 객체 생성 구문
+        //      클래스명 객체명 = new 클래스명(생성자 매개변수);
+
+        // cf) 클래스 타입
+        //      지정된 클래스를 기반으로 생성된 객체임으로 클래스 자체의 타입을 지님
     }
 }
