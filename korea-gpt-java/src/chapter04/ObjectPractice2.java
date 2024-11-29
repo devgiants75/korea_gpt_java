@@ -21,8 +21,33 @@ package chapter04;
     - 각 객체가 생성될 때마다 population 변수를 증가시키도록 생성자를 수정
 */
 
+class Person {
+    String name;
+    int age;
+    static int population = 0;
+
+    Person() {
+        population++;
+    }
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+        population++;
+    }
+
+    void introduce() {
+        System.out.println("안녕하세요, 저는 " + name + "이고, " + age + "살입니다.");
+    }
+}
+
 public class ObjectPractice2 {
     public static void main(String[] args) {
+        Person person = new Person("홍길동", 25);
+        new Person();
 
+        person.introduce(); // 안녕하세요, 저는 홍길동이고, 25살입니다.
+
+        System.out.println(Person.population); // 2
     }
 }
