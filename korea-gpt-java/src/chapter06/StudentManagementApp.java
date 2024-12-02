@@ -77,11 +77,29 @@ public class StudentManagementApp {
     static ArrayList<Student> studentList = new ArrayList<>();
 
     public static void main(String[] args) {
+//        Student student1 = new Student(1, "이승아", 28, "GPT반", 4.0);
+//        Student student2 = new Student(1, "이승아", 28, "GPT반", 4.0);
+//        Student student3 = new Student(1, "이승아", 28, "GPT반", 4.0);
+//        Student student4 = new Student(1, "이승아", 28, "GPT반", 4.0);
+//
+//        studentList.add(student1);
+//        studentList.add(student2);
+//        studentList.add(student3);
+//        studentList.add(student4);
+
         // 학생 추가
         addStudent(1, "이승아", 28, "GPT반", 4.0);
         addStudent(2, "이도경", 30, "IoT반", 3.8);
         addStudent(3, "이지희", 19, "GPT반", 4.3);
         addStudent(4, "이지훈", 16, "빅데이터반", 4.1);
+
+        printAllStudents();
+
+        findStudentById(3); // ID: 3, Name: 이지희, Age: 19, Major: GPT반, GPA: 4.3
+        findStudentById(5); // 해당 ID의 학생을 찾을 수 없습니다.
+
+        updateStudentGpa(1, 3.9);
+        updateStudentGpa(2, 4.5);
 
         printAllStudents();
     }
@@ -103,5 +121,28 @@ public class StudentManagementApp {
         for (Student student : studentList) {
             student.printStudentInfo();
         }
+    }
+
+    // 학생 검색
+    static void findStudentById(int studentId) {
+        for (Student student : studentList) {
+            if (student.studentId == studentId) {
+                student.printStudentInfo();
+                return;
+            }
+        }
+        System.out.println("해당 ID의 학생을 찾을 수 없습니다.");
+    }
+
+    // 평점 업데이트
+    static void updateStudentGpa(int studentId, double newGpa) {
+        for (Student student : studentList) {
+            if (student.studentId == studentId) {
+                student.updateGpa(newGpa);
+                System.out.println("평점이 업데이트되었습니다.");
+                return;
+            }
+        }
+        System.out.println("해당 ID의 학생을 찾을 수 없습니다.");
     }
 }
