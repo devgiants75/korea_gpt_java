@@ -35,6 +35,7 @@ class Calc {
     double x, y;
 
     int add(int a, int b) { return a + b; }
+    long add(long a, int b) { return a + b; }
 
     // long add(int c, int d) { return c + d; } - Error
     // : 실제 값 차이 여부와 반환타입의 차이 여부는 오버로딩과 관련 X
