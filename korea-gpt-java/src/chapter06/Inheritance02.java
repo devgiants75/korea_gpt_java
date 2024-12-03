@@ -8,15 +8,25 @@ package chapter06;
 // : 자식 클래스의 생성자 호출 시 '항상' 부모 클래스의 생성자가 호출!
 // > 사용자 정의 생성자 호출이 필요하지는 X
 
+/*
+* Mammal 클래스
+* 1) 필드: 이름(name), 숫자(number)
+* 2) 생성자: 매개변수 X, 매개변수(String name) - 생성자 오버로딩
+* 3) 메서드: 클래스 필드 정보를 출력(displayMammal)
+* */
 class Mammal {
     String name = "Parent";
     int number = 10;
+
+//    Mammal() {}
 
     Mammal() {
         System.out.println("빈 부모 생성자 - 인스턴스 생성");
     }
 
     Mammal(String name) {
+        // 필드와 지역변수의 이름이 같을 경우 충돌 방지를 위해
+        //      필드에 this. 키워드로 구분
         this.name = name; // Mammel 클래스로 생성되는 각 객체(this)
     }
 
@@ -25,8 +35,18 @@ class Mammal {
     }
 }
 
+/*
+* Cat 클래스(자식) - Mammal 클래스(부모)를 상속받음
+* 1) 필드: 이름(name)
+* 2) 생성자: 매개변수 X, 매개변수(String name) - 생성자 오버로딩
+* 3) 메서드: 정보출력(greet)
+* */
 class Cat extends Mammal {
     String name = "Child";
+
+//    Cat() {
+//        super(); - 상속을 받는 클래스의 기본 생성자에 반드시 포함!
+//    }
 
     Cat() {
         // super();
@@ -54,6 +74,11 @@ class Cat extends Mammal {
 
         // 부모 클래스가 가진 인스턴스 변수에 접근
         // : super (생략 X)
+
+        // super: 부모 클래스로 생성된 객체 그 자체
+        //      - 부모 클래스 내의 필드와 메서드에 접근 .연산자를 사용
+        //          super.필드명 / super.메서드명()
+        // super(): 부모 클래스 내의 생성자 호출
         System.out.println("부모 이름: " + super.name);
     }
 }
