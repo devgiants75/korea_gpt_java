@@ -111,7 +111,6 @@ class Card implements PlayingCard {
     //      : "어떤 동작을 외부에서 사용할 수 있음"을 보장
 }
 
-
 public class Interface01 {
     public static void main(String[] args) {
         // 인터페이스의 추상 메서드 사용
