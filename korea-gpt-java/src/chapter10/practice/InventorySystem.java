@@ -1,6 +1,7 @@
 package chapter10.practice;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 // Inventory System: 재고 관리 시스템
@@ -106,10 +107,25 @@ public class InventorySystem {
                         int quantity = Integer.parseInt(scanner.nextLine());
                         manager.updateStock(updateId, quantity);
                         break;
+                    case 7:
+                        System.out.print("Enter Book ID to remove: ");
+                        String removeId = scanner.nextLine();
+                        manager.remove(removeId);
+                        break;
+                    case 8:
+                        System.out.println(" == Exiting == ");
+                        return;
+                    default:
+                        System.out.println("Invalid option. Try again");
                 }
 
             } catch (NumberFormatException e) {
                 System.out.println("Please Enter a valid number.");
+            } catch (NoSuchElementException e) {
+                // 검색된 내용이 없을 경우 실행될 블럭
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
     }
