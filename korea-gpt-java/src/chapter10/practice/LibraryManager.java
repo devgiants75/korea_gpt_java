@@ -83,7 +83,7 @@ public class LibraryManager implements Manageable {
         for (Item item : items) {
             if (item.getId().equals(id) && item instanceof Book) {
                 ((Book) item).updateStock(quantity);
-                System.out.println("Stock updated for ID: " + id + ((Book) item).getStock());
+                System.out.println("Stock updated for ID: " + id + ", Stock: " + ((Book) item).getStock());
                 return;
             }
         }
