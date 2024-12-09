@@ -118,7 +118,7 @@ public class Main {
         int price = scanner.nextInt();
         System.out.print("Enter Item Quantity: ");
         int quantity = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // 버퍼 소비: Consume newline
         System.out.print("Enter Item Category (Electronics/Furniture): ");
         String category = scanner.nextLine();
 
