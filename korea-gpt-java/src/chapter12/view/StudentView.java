@@ -47,7 +47,7 @@ public class StudentView {
                     break;
                 case 6:
                     System.out.println("===== Process Exit =====");
-                    break;
+                    return;
             }
         }
     }

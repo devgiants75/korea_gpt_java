@@ -13,6 +13,17 @@ public class StudentController {
     }
 
     public void addStudent(String name, int age, String id) {
+//        학생 추가 시
+//        입력한 id의 학생이 존재하는 경우
+//        메시지 출력 + 추가 X
+        Student student = findStudentById(id);
+
+        if (student != null) {
+            // 입력받은 id의 학생이 있는 경우
+            System.out.println("해당 id의 학생이 이미 존재합니다.");
+            return;
+        }
+
         students.add(new Student(name, age, id));
     }
 

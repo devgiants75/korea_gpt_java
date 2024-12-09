@@ -32,8 +32,11 @@ package chapter12;
         - 학생 추가, 전체 조회, 특정 학생 조회, 수정, 삭제
 * */
 
+import chapter12.view.StudentView;
+
 public class StudentManagement {
     public static void main(String[] args) {
-
+        StudentView view = new StudentView();
+        view.showMenu();
     }
 }
