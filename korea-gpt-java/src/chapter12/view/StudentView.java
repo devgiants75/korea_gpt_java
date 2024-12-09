@@ -78,7 +78,7 @@ public class StudentView {
         String id = scanner.nextLine();
         Student student = controller.findStudentById(id);
         if (student != null) {
-            System.out.println(student.toString());
+            System.out.println(student);
         } else {
             System.out.println("Student not found");
         }
