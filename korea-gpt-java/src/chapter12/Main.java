@@ -17,8 +17,11 @@ package chapter12;
 // : BookController 클래스
 //      (사용자의 입력에 따라 적절한 Model 메서드를 호출)
 
+import chapter12.view.BookView;
+
 public class Main {
     public static void main(String[] args) {
-
+        BookView bookView = new BookView();
+        bookView.showMenu();
     }
 }
