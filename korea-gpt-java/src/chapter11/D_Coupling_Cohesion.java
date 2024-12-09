@@ -34,8 +34,104 @@ package chapter11;
 // : 각 클래스나 모듈이 독립적으로 동작하면서도, 본인의 역할에 충실
 // >> 유지보수가 쉽고, 확장성이 좋음
 
-public class D_Coupling_Cohesion {
-    public static void main(String[] args) {
+// == 낮은 결합도와 높은 응집도 구현 == //
+// : 클래스 간의 의존성을 줄이고, 변경에 강한 구조를 작성
 
+// 1. 낮은 결합도
+// 1-1) 인터페이스와 다형성 활용
+//      : 구현 클래스에 의존하지 않고, 인터페이스를 통해 서로 의존하게 구현 (DIP)
+//      >> 구현이 변경되거나 확장되어도 인터페이스에만 맞추면 동작
+
+// 인터페이스 정의
+interface Payment {
+    void processPayment();
+}
+
+// 구현 클래스
+class CreditCardPayment implements Payment {
+    @Override
+    public void processPayment() {
+        System.out.println("신용카드로 결제합니다.");
     }
 }
+
+class OrderClass {
+    // 1-2) 의존성 주입 (Dependency Injection)
+    // : 클래스가 직접 객체를 생성하지 않고, 외부에서 객체를 주입받도록 설계
+    // - 객체 간의 강한 결합을 줄이고, 변경에 유연
+    CreditCardPayment creditCardPayment = new CreditCardPayment();
+
+    private Payment payment;
+
+    public OrderClass(Payment payment) {
+        this.payment = payment;
+    }
+
+    void checkout() {
+        payment.processPayment();
+        // creditCardPayment.processPayment();
+    }
+}
+
+// 2. 높은 응집도
+// 2-1) 단일 책임 원칙 (SRP)
+// : 클래스는 단 하나의 책임만 가져야 함.
+class User {
+    // 2-2) 캡슐화
+    //      : 필드를 private 설정, getter와 setter를 통해 접근
+    //      : 클래스의 내부 동작을 숨기고, 외부와의 상호작용을 최소화
+    private String name;
+    private String email;
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    String getName() {
+        return name;
+    }
+}
+
+class UserRepository {
+    public void save(User user) {
+        // == 저장 로직 구현 ==
+        System.out.println("사용자 정보가 데이터베이스에 저장되었습니다.");
+    }
+}
+
+class UserService {
+    private UserRepository userRepository;
+
+    public UserService(UserRepository repository) {
+        this.userRepository = repository;
+    }
+
+    // 회원 가입 로직
+    public void registerUser(User user) {
+        // 회원가입에 대한 추가 로직
+        if (user.getName().isEmpty()) {
+            System.out.println("이름은 필수사항입니다.");
+            return;
+        }
+        userRepository.save(user);
+    }
+}
+
+
+public class D_Coupling_Cohesion {
+    public static void main(String[] args) {
+        Payment payment = new CreditCardPayment(); // 의존성 주입
+        OrderClass order = new OrderClass(payment);
+        order.checkout(); // 신용카드로 결제합니다.
+    }
+}
+
+// 낮은 결합도: 인터페이스와 다형성, 의존성 주입 등
+// 높은 응집도: 단일 책임 원칙 준수, 캡슐화, 모듈화(메서드 분리) 등
+
+
+
+
+
+
