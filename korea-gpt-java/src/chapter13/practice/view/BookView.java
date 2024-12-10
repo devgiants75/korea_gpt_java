@@ -20,7 +20,6 @@ public class BookView {
         System.out.println("5. 도서 삭제");
         System.out.println("0. 종료");
         System.out.print("선택 >>>");
-        System.out.println("==========================");
     }
 
     // 사용자 입력값에 대한 유효성 검증 로직 추가
@@ -44,8 +43,8 @@ public class BookView {
         if (id == -1) return null;
 
         scanner.nextLine();
-        System.out.println("제목: ");
 
+        System.out.println("제목: ");
         // cf) 문자열 메서드 - 문자열.trim()
         //      : 문자열 양 끝의 공백을 제거
         String title = scanner.nextLine().trim();

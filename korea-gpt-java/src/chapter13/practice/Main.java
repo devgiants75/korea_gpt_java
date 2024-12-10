@@ -21,10 +21,13 @@ package chapter13.practice;
 *
 * */
 
+import chapter13.practice.controller.BookController;
+
 // cf) 비즈니스 로직(Business Logic)
 //      : 프로그램에서 요구하는 요청의 처리나 특정 기능 수행을 위해 데이터를 처리하는 실질적인 로직
 public class Main {
     public static void main(String[] args) {
-
+        BookController controller = new BookController();
+        controller.start();
     }
 }
