@@ -23,6 +23,8 @@ public class BookView {
     }
 
     // 사용자 입력값에 대한 유효성 검증 로직 추가
+    // : 프로세스 로직 입력값
+    // : 데이터 입력값
     public int getInput() {
         int choice;
 
@@ -42,7 +44,7 @@ public class BookView {
         int id = getInput();
         if (id == -1) return null;
 
-        scanner.nextLine();
+        scanner.nextLine(); // 정수값이 잘 입력된 경우 - nextInt()의 버퍼 처리
 
         System.out.println("제목: ");
         // cf) 문자열 메서드 - 문자열.trim()
@@ -93,7 +95,7 @@ public class BookView {
             System.out.println("등록된 도서가 없습니다.");
         } else {
             for (Book book : books) {
-                book.toString();
+                System.out.println(book.toString());
             }
         }
     }
@@ -102,7 +104,7 @@ public class BookView {
         if (book == null) {
             System.out.println("해당 도서를 찾을 수 없습니다.");
         } else {
-            book.toString();
+            System.out.println(book);
         }
     }
 }

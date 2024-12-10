@@ -18,7 +18,6 @@ package chapter13.practice;
 *
 * @Repository
 *   데이터 저장소 역할
-*
 * */
 
 import chapter13.practice.controller.BookController;
