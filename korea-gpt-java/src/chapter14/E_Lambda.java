@@ -1,6 +1,8 @@
 package chapter14;
 
 // 자바의 함수형 인터페이스를 보관하고 있는 패키지
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.*;
 
 // 1. Predicate
@@ -70,5 +72,13 @@ public class E_Lambda {
         // === Supplier === //
         Supplier<Double> randomValue = () -> Math.random(); // 0.0과 0.1 사이의 난수
         System.out.println(randomValue.get()); // 0.7399291725004479
+
+        // == Map 활용 람다식 == //
+        Map<String, Integer> scores = new HashMap<>();
+        scores.put("이승아", 85);
+        scores.put("이도경", 90);
+        scores.put("이지희", 100);
+
+        scores.forEach((name, score) -> System.out.println(name + ":" + score));
     }
 }
