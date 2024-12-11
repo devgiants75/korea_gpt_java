@@ -84,6 +84,16 @@ interface Greeting {
     void sayHello();
 }
 
+interface ExampleInterface {
+    void something();
+}
+
+class ExampleClass implements ExampleInterface {
+    public void something() {
+        System.out.println("무슨 일");
+    }
+}
+
 public class A_Inner {
     public static void main(String[] args) {
         System.out.println("=== 비정적 내부 클래스 ===");
@@ -121,6 +131,8 @@ public class A_Inner {
             }
         };
 
+        ExampleClass exampleClass = new ExampleClass();
+
         AbstractClass abstractClass2 = new AbstractClass() {
             @Override
             void display() {
@@ -130,6 +142,8 @@ public class A_Inner {
 
         abstractClass1.display(); // 익명 내부 클래스
         abstractClass2.display(); // 두번째 익명 내부 클래스
+
+        exampleClass.something();
 
         System.out.println(abstractClass1 == abstractClass2); // false
 
