@@ -79,6 +79,11 @@ abstract class AbstractClass {
     abstract void display();
 }
 
+// 인터페이스
+interface Greeting {
+    void sayHello();
+}
+
 public class A_Inner {
     public static void main(String[] args) {
         System.out.println("=== 비정적 내부 클래스 ===");
@@ -127,5 +132,16 @@ public class A_Inner {
         abstractClass2.display(); // 두번째 익명 내부 클래스
 
         System.out.println(abstractClass1 == abstractClass2); // false
+
+        // 인터페이스 사용 익명 클래스
+        System.out.println("=== 인터페이스 사용 익명 클래스 ===");
+        Greeting greeting = new Greeting() {
+            @Override
+            public void sayHello() {
+                System.out.println("안녕하세요! 인터페이스 익명 클래스입니다! :)");
+            }
+        };
+
+        greeting.sayHello(); // 안녕하세요! 인터페이스 익명 클래스입니다! :)
     }
 }
