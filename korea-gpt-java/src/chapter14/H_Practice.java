@@ -53,7 +53,12 @@ public class H_Practice {
 
         // 1-3. 학생들을 점수순으로 정렬
         List<StudentClass> sortedStudents = studentClasses.stream()
+                // 컬렉션 프레임워크의 중간 연산: .sorted(정렬)
+                // Comparator클래스의 .comparingDouble 정적 메서드 활용
+                // : 실수값들에 대한 비교
+                // StudentClass::getGrade
                 .sorted(Comparator.comparingDouble(StudentClass::getGrade))
+//                .sorted(Comparator.comparingDouble(StudentClass::getGrade).reversed())
                 .collect(Collectors.toList());
 
         System.out.println("점수 순으로 정렬된 학생들: ");
