@@ -77,6 +77,5 @@ public class C_Optional {
         //      - 필드 & 매개변수로 사용 X
         // - 값이 반드시 있어야 하는 경우 Optional 사용 X
         //      : null 방지에 대한 필수 값은 직접 값을 반환하고 null 여부 확인
-
     }
 }
