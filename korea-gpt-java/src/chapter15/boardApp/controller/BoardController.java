@@ -36,11 +36,35 @@ public class BoardController {
     }
 
     public void createBoard(BoardRequestDto boardRequestDto) {
+        if (isValidRequest(boardRequestDto)) {
+            boardService.save(boardRequestDto);
+            System.out.println("게시글이 등록되었습니다.");
+        } else {
+            System.out.println("입력값이 유효하지 않습니다.");
+        }
     }
 
     public void updateBoard(long updateId, BoardRequestDto boardRequestDto) {
+        if (isValidRequest(boardRequestDto)) {
+            boardService.update(updateId, boardRequestDto);
+            System.out.println("게시글이 수정되었습니다.");
+        } else {
+            System.out.println("입력값이 유효하지 않습니다.");
+        }
     }
 
     public void deleteBoard(long deleteId) {
+        try {
+            boardService.delete(deleteId);
+            System.out.println("게시글이 삭제되었습니다.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("오류: " + e.getMessage());
+        }
+    }
+
+    private boolean isValidRequest(BoardRequestDto boardRequestDto) {
+        boolean result = boardRequestDto.getTitle() != null && !boardRequestDto.getTitle().isEmpty()
+                && boardRequestDto.getContent() != null && !boardRequestDto.getContent().isEmpty();
+        return result;
     }
 }

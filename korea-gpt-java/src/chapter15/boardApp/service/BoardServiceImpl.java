@@ -54,8 +54,10 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void update(long id, BoardRequestDto boardRequestDto) {
-        Board board = boardRepository.findById(id)
+        Board existingBoard = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
+        existingBoard.setTitle(boardRequestDto.getTitle());
+        existingBoard.setContent(boardRequestDto.getContent());
     }
 
     @Override
