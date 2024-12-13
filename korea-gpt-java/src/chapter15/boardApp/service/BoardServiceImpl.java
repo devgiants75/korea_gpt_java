@@ -45,4 +45,24 @@ public class BoardServiceImpl implements BoardService {
         // 반환
         return boardResponseDto;
     }
+
+    @Override
+    public void save(BoardRequestDto boardRequestDto) {
+        Board board = boardRequestDto.toEntity(); // id를 제외한 필드에 사용자의 요청값을 할당
+        boardRepository.save(board);
+    }
+
+    @Override
+    public void update(long id, BoardRequestDto boardRequestDto) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
+    }
+
+    @Override
+    public void delete(long id) {
+        if (!boardRepository.findById(id).isPresent()) {
+            throw new IllegalArgumentException("삭제할 게시글이 존재하지 않습니다.");
+        }
+        boardRepository.delete(id);
+    }
 }

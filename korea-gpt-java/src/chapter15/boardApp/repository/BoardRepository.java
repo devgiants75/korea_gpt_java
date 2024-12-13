@@ -23,4 +23,17 @@ public class BoardRepository {
         return boardStorage.stream()
                 .filter(board -> board.getId() == id).findFirst();
     }
+
+    public void save(Board board) {
+        board.setId(idSequence++);
+        boardStorage.add(board);
+    }
+
+    public void delete(long id) {
+        // removeIf()
+        // : ArrayList의 메서드
+        // : 인자로 전달된 조건으로 리스트이 아이템을 삭제
+        // - 조건에 부합하는 것은 삭제, 그렇지 않은 것은 리스트에 남음
+        boardStorage.removeIf(board -> board.getId() == id);
+    }
 }
