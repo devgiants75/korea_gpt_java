@@ -1,4 +1,4 @@
-package chapter15.boardApp;
+package chapter15.boardApp.dto;
 
 public class BoardRequestDto {
 }
