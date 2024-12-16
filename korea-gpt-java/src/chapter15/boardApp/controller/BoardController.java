@@ -2,12 +2,10 @@ package chapter15.boardApp.controller;
 
 import chapter15.boardApp.dto.BoardRequestDto;
 import chapter15.boardApp.dto.BoardResponseDto;
-import chapter15.boardApp.entity.Board;
 import chapter15.boardApp.service.BoardService;
 import chapter15.boardApp.service.BoardServiceImpl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BoardController {
     private final BoardService boardService;
