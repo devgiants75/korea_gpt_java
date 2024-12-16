@@ -34,10 +34,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logout() {
         if (loggedInUser != null) {
-            System.out.println("로그인 성공: " + loggedInUser.getName());
+            System.out.println("로그아웃 성공: " + loggedInUser.getName());
             loggedInUser = null;
         } else {
             System.out.println("로그인 상태가 아닙니다.");
         }
+    }
+
+    @Override
+    public boolean isLoggedIn() {
+        return loggedInUser != null;
     }
 }

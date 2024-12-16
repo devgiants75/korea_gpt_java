@@ -1,5 +1,7 @@
 package chapter17;
 
+import chapter17.controller.ReservationController;
+
 /*
 * ============ 프로젝트 개요 ============
 * : 온라인 예약 시스템
@@ -24,6 +26,7 @@ package chapter17;
 * */
 public class Reservation {
     public static void main(String[] args) {
-
+        ReservationController controller = new ReservationController();
+        controller.run();
     }
 }

@@ -14,7 +14,7 @@ public class ReservationController {
 
     public ReservationController() {
         this.userService = new UserServiceImpl();
-        this.reservationService = new ReservationServiceImpl();
+        this.reservationService = new ReservationServiceImpl(userService);
     }
 
     public void run() {
@@ -83,9 +83,11 @@ public class ReservationController {
                         input(scanner, "사용자 ID")
                 );
                 results.forEach(System.out::println);
+                break;
             case 6:
                 // 예약 취소
                 reservationService.cancelReservation(input(scanner, "예약 ID"));
+                break;
             case 7:
                 System.out.println("프로그램을 종료합니다.");
                 return false;

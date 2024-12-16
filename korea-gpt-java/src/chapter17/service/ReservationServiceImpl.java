@@ -10,17 +10,23 @@ public class ReservationServiceImpl implements ReservationService {
 //    private final ReservationRepository reservationRepository =  new ReservationRepository();
 
     private final ReservationRepository reservationRepository;
+    private final UserServiceImpl userServiceImpl;
 
-    public ReservationServiceImpl() {
+    public ReservationServiceImpl(UserServiceImpl userServiceImpl) {
         this.reservationRepository = new ReservationRepository();
+        this.userServiceImpl = userServiceImpl;
     }
 
     @Override
     public void createReservation(String reservationId, String userId) {
-        Date reservationTime = new Date();
-        Reservation newReservation = new Reservation(reservationId, userId, reservationTime);
-        reservationRepository.save(newReservation);
-        System.out.println("예약 완료: " + reservationTime);
+        if (userServiceImpl.isLoggedIn()) {
+            Date reservationTime = new Date();
+            Reservation newReservation = new Reservation(reservationId, userId, reservationTime);
+            reservationRepository.save(newReservation);
+            System.out.println("예약 완료: " + reservationTime);
+        } else {
+            System.out.println("로그인이 필요한 기능입니다.");
+        }
     }
 
     @Override
