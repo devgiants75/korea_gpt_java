@@ -1,4 +1,7 @@
 package chapter17.service;
 
-public class UserService {
+public interface UserService {
+    void registerUser(String userId, String password, String name, String email);
+    void login(String userId, String password);
+    void logout();
 }
