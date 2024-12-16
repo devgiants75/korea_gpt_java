@@ -3,6 +3,8 @@ package chapter17.entity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 @Getter
 public class Reservation {
@@ -10,7 +12,7 @@ public class Reservation {
     private final String reservationId;
     // 예약자 정보
     private final String userId;
-    private final String reservationTime;
+    private final Date reservationTime;
 
     // 초기값 설정
     // : 해당 예약의 활성화 상태를 저장

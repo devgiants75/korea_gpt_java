@@ -75,8 +75,7 @@ public class ReservationController {
                 // 예약 등록
                 reservationService.createReservation(
                         input(scanner, "예약 ID"),
-                        input(scanner, "사용자 ID"),
-                        input(scanner, "예약 시간")
+                        input(scanner, "사용자 ID")
                 );
             case 5:
                 // 예약 확인
