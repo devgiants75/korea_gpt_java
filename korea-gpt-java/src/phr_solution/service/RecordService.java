@@ -111,9 +111,13 @@ public class RecordService implements RecordServiceInterface {
 
     @Override
     public void deleteRecord(Long id) {
-        HealthRecord healthRecord = recordRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID의 건강 기록은 존재하지 않습니다. ID: " + id));
+        try {
+            HealthRecord healthRecord = recordRepository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 ID의 건강 기록은 존재하지 않습니다. ID: " + id));
 
-        recordRepository.delete(healthRecord);
+            recordRepository.delete(healthRecord);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

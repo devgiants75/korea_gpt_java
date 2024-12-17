@@ -104,7 +104,11 @@ public class App {
             case 3: { // 환자 정보 조회 (단건): 환자 고유 번호
                 long id = getIdInput();
                 PatientResponseDto patient = patientController.getPatientById(id);
-                System.out.println(patient);
+                if (patient == null) {
+                    System.out.println("해당 하는 ID의 환자가 없습니다.");
+                } else {
+                    System.out.println(patient);
+                }
                 break;
             }
             case 4: { // 환자 정보 수정: 환자 고유 번호, 수정할 데이터 전달(이름, 나이, 성별)
