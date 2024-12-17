@@ -28,7 +28,11 @@ import phr_solution.controller.PatientController;
 import phr_solution.controller.RecordController;
 import phr_solution.dto.request.PatientRequestDto;
 import phr_solution.dto.request.RecordRequestDto;
+import phr_solution.dto.response.PatientResponseDto;
+import phr_solution.entity.HealthRecord;
+import phr_solution.entity.Patient;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -82,31 +86,58 @@ public class App {
         switch (choice) {
             // 환자 관련 기능
             case 1: { // 환자 등록: 이름, 나이, 성별
+                PatientRequestDto requestDto = createPatientRequest();
+                patientController.registerPatient(requestDto);
+                System.out.println("환자 정보가 등록되었습니다.");
                 break;
             }
             case 2: { // 환자 정보 조회 (전체)
+                List<PatientResponseDto> patients = patientController.getAllPatients();
+                patients.forEach(System.out::println);
                 break;
             }
             case 3: { // 환자 정보 조회 (단건): 환자 고유 번호
+                long id = getIdInput();
+                PatientResponseDto patient = patientController.getPatientById(id);
+                System.out.println(patient);
                 break;
             }
             case 4: { // 환자 정보 수정: 환자 고유 번호, 수정할 데이터 전달(이름, 나이, 성별)
+                long id = getIdInput();
+                PatientRequestDto requestDto = createPatientRequest();
+                patientController.updatePatient(id, requestDto);
+                System.out.println("환자 정보가 수정되었습니다.");
                 break;
             }
             case 5: { // 환자 정보 삭제: 환자 고유 번호
+                long id = getIdInput();
+                patientController.deletePatient(id);
+                System.out.println("환자 정보가 삭제되었습니다.");
                 break;
             }
             // 건강 기록 관련 기능
             case 6: { // 건강 기록 추가: 환자 고유 번호, 방문 날짜, 진단명, 처방 내용
+                RecordRequestDto requestDto = createRecordRequest();
+                long id = requestDto.getPatientId();
+                recordController.createRecord(requestDto);
+                System.out.println(id + "번호의 환자 기록이 추가되었습니다.");
                 break;
             }
             case 7: { // 건강 기록 조회 (전체)
+                List<HealthRecord> records = recordController.getAllRecords();
+                records.forEach(System.out::println);
                 break;
             }
             case 8: { // 건강 기록 조회 (필터링 - 진단명으로 조회): 진단명
+                String diagnosisFilter = getInput("필터 조건 (진단명): ");
+                List<HealthRecord> filteredRecords = recordController.filterRecordsByDiagnosis(diagnosisFilter);
+                filteredRecords.forEach(System.out::println);
                 break;
             }
             case 9: { // 건강 기록 삭제: 건강 기록 고유 번호
+                long id = getIdInput();
+                recordController.deleteRecord(id);
+                System.out.println("건강 기록이 삭제되었습니다.");
                 break;
             }
             case 10: {
