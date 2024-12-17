@@ -29,6 +29,7 @@ import phr_solution.controller.RecordController;
 import phr_solution.dto.request.PatientRequestDto;
 import phr_solution.dto.request.RecordRequestDto;
 import phr_solution.dto.response.PatientResponseDto;
+import phr_solution.dto.response.RecordResponseDto;
 import phr_solution.entity.HealthRecord;
 import phr_solution.entity.Patient;
 
@@ -124,13 +125,13 @@ public class App {
                 break;
             }
             case 7: { // 건강 기록 조회 (전체)
-                List<HealthRecord> records = recordController.getAllRecords();
+                List<RecordResponseDto> records = recordController.getAllRecords();
                 records.forEach(System.out::println);
                 break;
             }
             case 8: { // 건강 기록 조회 (필터링 - 진단명으로 조회): 진단명
                 String diagnosisFilter = getInput("필터 조건 (진단명): ");
-                List<HealthRecord> filteredRecords = recordController.filterRecordsByDiagnosis(diagnosisFilter);
+                List<RecordResponseDto> filteredRecords = recordController.filterRecordsByDiagnosis(diagnosisFilter);
                 filteredRecords.forEach(System.out::println);
                 break;
             }
