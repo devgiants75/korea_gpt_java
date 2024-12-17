@@ -70,6 +70,7 @@ public class App {
         System.out.println("9. 건강 기록 삭제");
 
         System.out.println("10. 프로그램 종료");
+        System.out.print("메뉴를 선택하세요: ");
     }
 
     private static int getChoice() {

@@ -2,6 +2,7 @@ package phr_solution.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor

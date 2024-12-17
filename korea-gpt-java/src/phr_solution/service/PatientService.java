@@ -49,30 +49,44 @@ public class PatientService implements PatientServiceInterface {
 
     @Override
     public PatientResponseDto getPatientById(Long id) {
-        Patient patient = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
+        PatientResponseDto responseDto = null;
+        try {
 
-        PatientResponseDto responseDto = new PatientResponseDto(patient.getName(), patient.getGender());
+            Patient patient = repository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
+
+            responseDto = new PatientResponseDto(patient.getName(), patient.getGender());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return responseDto;
     }
 
     @Override
     public void updatePatient(Long id, PatientRequestDto requestDto) {
-        Patient patient = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
+        try {
+            Patient patient = repository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
 
-        patient.setName(requestDto.getName());
-        patient.setAge(requestDto.getAge());
-        patient.setGender(requestDto.getGender());
+            patient.setName(requestDto.getName());
+            patient.setAge(requestDto.getAge());
+            patient.setGender(requestDto.getGender());
 
-        repository.save(patient);
+            repository.save(patient);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void deletePatient(Long id) {
-        Patient patient = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
+        try {
+            Patient patient = repository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 ID를 가진 환자를 찾을 수 없습니다:" + id));
 
-        repository.delete(patient);
+            repository.delete(patient);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
