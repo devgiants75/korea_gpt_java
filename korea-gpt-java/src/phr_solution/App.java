@@ -90,12 +90,15 @@ public class App {
             case 1: { // 환자 등록: 이름, 나이, 성별
                 PatientRequestDto requestDto = createPatientRequest();
                 patientController.registerPatient(requestDto);
-                System.out.println("환자 정보가 등록되었습니다.");
                 break;
             }
             case 2: { // 환자 정보 조회 (전체)
                 List<PatientResponseDto> patients = patientController.getAllPatients();
-                patients.forEach(System.out::println);
+                if (patients.isEmpty()) {
+                    System.out.println("환자 정보가 없습니다.");
+                } else {
+                    patients.forEach(System.out::println);
+                }
                 break;
             }
             case 3: { // 환자 정보 조회 (단건): 환자 고유 번호
@@ -108,13 +111,11 @@ public class App {
                 long id = getIdInput();
                 PatientRequestDto requestDto = createPatientRequest();
                 patientController.updatePatient(id, requestDto);
-                System.out.println("환자 정보가 수정되었습니다.");
                 break;
             }
             case 5: { // 환자 정보 삭제: 환자 고유 번호
                 long id = getIdInput();
                 patientController.deletePatient(id);
-                System.out.println("환자 정보가 삭제되었습니다.");
                 break;
             }
             // 건강 기록 관련 기능
@@ -122,12 +123,15 @@ public class App {
                 RecordRequestDto requestDto = createRecordRequest();
                 long id = requestDto.getPatientId();
                 recordController.createRecord(requestDto);
-                System.out.println(id + "번호의 환자 기록이 추가되었습니다.");
                 break;
             }
             case 7: { // 건강 기록 조회 (전체)
                 List<RecordResponseDto> records = recordController.getAllRecords();
-                records.forEach(System.out::println);
+                if (records.isEmpty()) {
+                    System.out.println("건강 기록이 없습니다.");
+                } else {
+                    records.forEach(System.out::println);
+                }
                 break;
             }
             case 8: { // 건강 기록 조회 (필터링 - 진단명으로 조회): 진단명
@@ -139,7 +143,6 @@ public class App {
             case 9: { // 건강 기록 삭제: 건강 기록 고유 번호
                 long id = getIdInput();
                 recordController.deleteRecord(id);
-                System.out.println("건강 기록이 삭제되었습니다.");
                 break;
             }
             case 10: {
